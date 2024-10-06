@@ -1,9 +1,10 @@
+"use client";
 import Signin from "@/components/form/signin";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Signinpage = () => {
+const SigninPage = () => {
   return (
     <div className="flex h-screen px-20 py-10 space-x-5 relative">
       <Image
@@ -20,8 +21,8 @@ const Signinpage = () => {
         <Image
           src="./image/signin.svg"
           alt=""
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           className="w-full h-full"
         />
         <p>Achieve More Every Day</p>
@@ -36,7 +37,7 @@ const Signinpage = () => {
         </Link>
         <div className="flex w-full space-x-3">
           <p>donot have account? </p>
-          <Link href="" className="text-customcolor-blue">
+          <Link href="/api/auth/signup" className="text-customcolor-blue">
             SignUp
           </Link>
         </div>
@@ -55,4 +56,4 @@ const Signinpage = () => {
   );
 };
 
-export default Signinpage;
+export default SigninPage;

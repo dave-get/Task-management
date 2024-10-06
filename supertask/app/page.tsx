@@ -1,13 +1,12 @@
-// import Signup from "@/components/form/signup";
-import Signin from "@/components/form/signin";
-import Signinpage from "@/lib/signin/signinpage";
-import SignupPage from "@/lib/signup/signupPage";
+// import SignupPage from "@/components/form/pages/signupPage";
+
+import SigninPage from "@/app/api/auth/signin/page";
 
 export default function Home() {
   return (
     <div>
+      <SigninPage />
       {/* <SignupPage /> */}
-      <Signinpage />
     </div>
   );
 }

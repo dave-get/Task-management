@@ -2,10 +2,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SignupSchema, InputType } from "./schema";
+import { SignupSchema, SignupType } from "./schema";
 
 const Signup = () => {
-  const { register, handleSubmit, formState } = useForm<InputType>({
+  const { register, handleSubmit, formState } = useForm<SignupType>({
     resolver: zodResolver(SignupSchema),
   });
   const { errors } = formState;
@@ -88,7 +88,9 @@ const Signup = () => {
             className="w-full h-10 pl-5 outline-none border border-customcolor-light-gray rounded"
             {...register("password")}
           />
-          <p>{errors.password?.message as string} &nbsp;</p>
+          <p className="text-red-500 text-sm">
+            {errors.password?.message as string} &nbsp;
+          </p>
         </div>
         <button
           type="submit"
