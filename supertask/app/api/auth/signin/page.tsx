@@ -8,7 +8,7 @@ const SigninPage = () => {
   return (
     <div className="flex h-screen px-20 py-10 space-x-5 relative">
       <Image
-        src="./image/background1.svg"
+        src="/image/background1.svg"
         alt=""
         layout="fill"
         objectFit="cover"
@@ -19,7 +19,7 @@ const SigninPage = () => {
           Super Task
         </p>
         <Image
-          src="./image/signin.svg"
+          src="/image/signin.svg"
           alt=""
           fill
           style={{ objectFit: "cover" }}
@@ -43,11 +43,11 @@ const SigninPage = () => {
         </div>
         <div className="flex items-center w-full justify-between">
           <div className="flex bg-slate-100 rounded px-2 py-2 space-x-1">
-            <Image src="./icons/google.svg" alt="" width={24} height={24} />
+            <Image src="/icons/google.svg" alt="" width={24} height={24} />
             <p>Sign Up with Google</p>
           </div>
           <div className="flex bg-slate-100 rounded px-2 py-2 space-x-1">
-            <Image src="./icons/facebook.svg" alt="" width={24} height={24} />
+            <Image src="/icons/facebook.svg" alt="" width={24} height={24} />
             <p>Sign Up with Facebook</p>
           </div>
         </div>

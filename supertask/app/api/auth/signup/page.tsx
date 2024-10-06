@@ -9,7 +9,7 @@ const SignupPage = () => {
     <div className="flex space-x-10 pl-20 pr-20 pt-12 pb-10 bg-customcolor-sky-blue">
       <div className="flex-none w-3/6 relative">
         <Image
-          src="./image/signup.svg"
+          src="/image/signup.svg"
           alt=""
           fill
           style={{ objectFit: "cover" }}
@@ -33,11 +33,11 @@ const SignupPage = () => {
       <div className="flex flex-col w-4/6 items-center py-5 space-y-5 px-10">
         <div className="flex items-center w-full justify-between">
           <div className="flex bg-white px-2 py-2 space-x-1">
-            <Image src="./icons/google.svg" alt="" width={24} height={24} />
+            <Image src="/icons/google.svg" alt="" width={24} height={24} />
             <p>Sign Up with Google</p>
           </div>
           <div className="flex bg-white px-2 py-2 space-x-1">
-            <Image src="./icons/facebook.svg" alt="" width={24} height={24} />
+            <Image src="/icons/facebook.svg" alt="" width={24} height={24} />
             <p>Sign Up with Facebook</p>
           </div>
         </div>

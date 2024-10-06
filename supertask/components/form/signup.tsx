@@ -1,18 +1,53 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignupSchema, SignupType } from "./schema";
+import { toastError, toastSuccess } from "../toastify/toast";
+import { useRouter } from "next/navigation";
+import { Loader } from "lucide-react";
 
 const Signup = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   const { register, handleSubmit, formState } = useForm<SignupType>({
     resolver: zodResolver(SignupSchema),
   });
   const { errors } = formState;
 
-  const onsubmit = () => {
-    console.log("clicked");
+  const onsubmit = async (data: SignupType) => {
+    const res = await fetch(`${process.env.BACKEND_URL}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: data.firstname,
+        lastName: data.lastname,
+        email: data.email,
+        password: data.password,
+        date: data.dateOfBirth,
+        phone: data.phoneNumber,
+      }),
+    });
+
+    if (res.ok) {
+      console.log("User created successfully");
+      router.push("/api/auth/signin");
+      setIsLoading(false);
+      toastSuccess("Account created successfully");
+    }
+    if (!res.ok) {
+      console.log("Failed to create user");
+      toastError("Failed to create user");
+      setIsLoading(false);
+    }
+    if (!res.ok) {
+      console.log("Failed to create user");
+    }
   };
+
   return (
     <>
       <form
@@ -61,7 +96,11 @@ const Signup = () => {
           <input
             type="date"
             className="h-10 pl-5 outline-none border border-customcolor-light-gray rounded"
+            {...register("dateOfBirth")}
           />
+          <p className="text-red-500 text-sm">
+            {errors.dateOfBirth?.message as string} &nbsp;
+          </p>
         </div>
         <div>
           <p>Phone Number</p>
@@ -96,7 +135,7 @@ const Signup = () => {
           type="submit"
           className="flex relative left-72 items-center px-8 py-1 rounded-full bg-customcolor-button1"
         >
-          Submit
+          {isLoading ? <Loader className="animate-spin w-full" /> : "Submit"}
         </button>
       </form>
     </>
